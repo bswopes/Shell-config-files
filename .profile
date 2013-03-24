@@ -90,9 +90,9 @@ alias whatismyip='curl http://automation.whatismyip.com/n09230945.asp'
 grep --exclude-dir=x .profile /dev/null &> /dev/null
 HAVE_EXCLUDE_DIRS=`test $? == 1 && echo true || echo false`
 if $HAVE_EXCLUDE_DIRS; then   
-  GREP_OPTIONS='--exclude-dir=".svn" --color=auto -s'; 
+  GREP_OPTIONS='--exclude-dir=".svn" --exclude-dir=".git" --exclude-dir=".snapshot" --color=auto -s'; 
 else 
-  GREP_OPTIONS='--exclude=".svn" --color=auto -s'; 
+  GREP_OPTIONS='--exclude=".svn" --exclude=".git" --exclude=".snapshot" --color=auto -s'; 
 fi
 export GREP_OPTIONS;
 
