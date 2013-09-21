@@ -66,6 +66,10 @@ CDPATH='.:~'
 [ -d /Applications/ ] && CDPATH=$CDPATH':/Applications/'
 export CDPATH
 
+########
+# Path #
+########
+
 # For MacPorts
 [ -d /opt/local/bin -a -d /opt/local/sbin ] && export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 
@@ -78,13 +82,16 @@ export CDPATH
 
 [ -f .work_aliases ] && source .work_aliases
 [ -f .home_aliases ] && source .home_aliases
+[ -e ~/Dropbox/shell/aliases.sh ] && source ~/Dropbox/shell/aliases.sh
+#[ -e /opt/local/bin/fortune ] && /opt/local/bin/fortune
 
 alias suro="export SUDO_PS1=\"${BRed}\u@${PROMPTHOST}${Color_Off} : ${BBlue}\w${Color_Off} # \" && sudo -s"
-which vim >/dev/null && alias vi='vim'
+which vim 2>&1 >/dev/null && alias vi='vim'
 ls -F --color &>/dev/null && alias ls='ls -F --color' || alias ls='ls -FG'
 alias clear="clear && printf %b '\033[3J'" 
 alias cg='crontab -l | grep -i' 
-alias whatismyip='curl http://automation.whatismyip.com/n09230945.asp'
+alias hg='history | grep -i' 
+alias whatismyip='curl http://ipecho.net/plain'
 
 # If we have exclude-dirs, use it
 grep --exclude-dir=x .profile /dev/null &> /dev/null
@@ -100,5 +107,3 @@ export GREP_OPTIONS;
 [ -e ~/.ssh/known_hosts ] && complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -hv "\["`;)" ssh 
 #[ -e ~/.ssh/known_hosts ] && complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -hv "\["`;)" scp 
 
-[ -e ~/Dropbox/shell/aliases.sh ] && source ~/Dropbox/shell/aliases.sh
-#[ -e /opt/local/bin/fortune ] && /opt/local/bin/fortune
