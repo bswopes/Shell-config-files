@@ -11,7 +11,7 @@ esac
 #################
 
 shopt -s histappend
-export HISTSIZE=5000
+export HISTSIZE=20000
 export HISTCONTROL=ignoreboth:erasedups
 export HISTTIMEFORMAT='%F %T '
 export HISTIGNORE="pwd:history:ls"
@@ -80,7 +80,7 @@ export CDPATH
 # Aliases #
 ###########
 
-[ -f .work_aliases ] && source .work_aliases
+#[ -f .work_aliases ] && source .work_aliases
 [ -f .home_aliases ] && source .home_aliases
 [ -e ~/Dropbox/shell/aliases.sh ] && source ~/Dropbox/shell/aliases.sh
 #[ -e /opt/local/bin/fortune ] && /opt/local/bin/fortune
@@ -104,6 +104,7 @@ fi
 export GREP_OPTIONS;
 
 # autocomplete for hostnames in known_hosts
-[ -e ~/.ssh/known_hosts ] && complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -hv "\["`;)" ssh 
+#[ -e ~/.ssh/known_hosts ] && complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -hv "\["`;)" ssh 
+[ -e ~/.ssh/known_hosts ] && complete -W "$(echo `sed -e 's/[ ,].*//g' ~/.ssh/known_hosts | uniq | grep -hv "\["`;)" ssh 
 #[ -e ~/.ssh/known_hosts ] && complete -W "$(echo `cat ~/.ssh/known_hosts | cut -f 1 -d ' ' | sed -e s/,.*//g | uniq | grep -hv "\["`;)" scp 
 
