@@ -4,7 +4,7 @@ case $- in
   *) return 0;; 
 esac
 
-[ -e ~/Dropbox/shell/onload.sh ] && sh ~/Dropbox/shell/onload.sh
+#[ -e ~/Dropbox/shell/onload.sh ] && sh ~/Dropbox/shell/onload.sh
 
 #################
 # History stuff #
@@ -82,7 +82,7 @@ export CDPATH
 
 #[ -f .work_aliases ] && source .work_aliases
 [ -f .home_aliases ] && source .home_aliases
-[ -e ~/Dropbox/shell/aliases.sh ] && source ~/Dropbox/shell/aliases.sh
+#[ -e ~/Dropbox/shell/aliases.sh ] && source ~/Dropbox/shell/aliases.sh
 #[ -e /opt/local/bin/fortune ] && /opt/local/bin/fortune
 
 alias suro="export SUDO_PS1=\"${BRed}\u@${PROMPTHOST}${Color_Off} : ${BBlue}\w${Color_Off} # \" && sudo -s"
